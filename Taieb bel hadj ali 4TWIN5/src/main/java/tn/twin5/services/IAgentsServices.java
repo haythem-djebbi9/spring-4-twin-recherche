@@ -14,5 +14,7 @@ public interface IAgentsServices {
     List<Agents> findAll();
     List<Agents> getAvailableAgentsWithSkills(List<Skills> skills);
 
-    List<Agents> findAvailableAgentsWithSingleSkill(Skills skill);
+
+    List<Agents> findAgentsBySkills (Skills skill);
+
 }

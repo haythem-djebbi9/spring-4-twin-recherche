@@ -49,11 +49,20 @@ public class AgentRestController {
     }
 
     // AgentRestController.java  ← Ajoute cette méthode (garde l’autre qui existe déjà)
-    @GetMapping("/available/single")
-    public ResponseEntity<List<Agents>> getAvailableAgentsWithSingleSkill(
+
+
+
+
+    @GetMapping("/chercherskill")
+    public ResponseEntity<List<Agents>> getChercherSkills(
+
             @RequestParam("skill") Skills skill) {
 
-        return ResponseEntity.ok(agentsServices.findAvailableAgentsWithSingleSkill(skill));
+        return ResponseEntity.ok(agentsServices.findAgentsBySkills(skill));
     }
 
+
+
+
 }
+

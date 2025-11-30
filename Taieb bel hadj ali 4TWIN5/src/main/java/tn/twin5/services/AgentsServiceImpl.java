@@ -1,5 +1,6 @@
 package tn.twin5.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.weaver.loadtime.Agent;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import tn.twin5.entities.enums.Skills;
 import tn.twin5.repositories.IAgentsRepository;
 
 @Service
+@Slf4j
+
 //@RequiredArgsConstructor
 public class AgentsServiceImpl implements IAgentsServices {
 
@@ -55,9 +58,11 @@ public class AgentsServiceImpl implements IAgentsServices {
         }
     }
 
+
+
     @Override
-    public List<Agents> findAvailableAgentsWithSingleSkill(Skills skill) {
-        return agentsRepository.findAvailableAgentsWithSingleSkill(skill);
+    public List<Agents> findAgentsBySkills(Skills skill) {
+        return agentsRepository.findAgentsBySkillsContains(skill);
     }
 
 

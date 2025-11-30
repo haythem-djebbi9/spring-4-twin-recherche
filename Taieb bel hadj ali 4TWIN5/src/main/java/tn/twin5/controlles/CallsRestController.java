@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("calls")
@@ -79,5 +80,20 @@ public class CallsRestController {
             @PathVariable Long agentId
     ) {
         return callService.assignToAgent(calls, agentId);
+    }
+
+    @PutMapping("/assign/agent/{callId}/{agentId}")
+    public void assignCallToAgent(@PathVariable Long callId, @PathVariable Long agentId) {
+        callService.assignCallToAgent(callId, agentId);
+    }
+
+    @PutMapping("/assign/ai/{callId}/{aiId}")
+    public void assignToAI(@PathVariable Long callId, @PathVariable Long aiId) {
+        callService.assignCallToAISystem(callId, aiId);
+    }
+
+    @PutMapping("/auto-assign")
+    public void autoAssign(@RequestBody Set<Long> callIds) {
+        callService.assignCallsToAgents(callIds);
     }
 }
